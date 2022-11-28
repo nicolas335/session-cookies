@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de colores</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body style="background-color:<%= locals.bgColor ? locals.bgColor : null %>">
+    <h2 class="text-center">Choose your color</h2>
+
+    <% if(locals.name){ %>
+      <div class="card">
+        <div class="card-header" style="font-weight: bold">
+          ¡Bienvenidx!
+        </div>
+        <div class="card-body">
+          <% if (age) { %>
+            <h2>Hola <%= name %>, elegiste el color: <%= color %>, tu email es: <%= email %> y tu edad es: <%= age %></h2>
+        <%  }else{ %>                    
+          <h2>Hola <%= name %>, elegiste el color: <%= color %>, tu email es: <%= email %></h2>
+        <% } %>
+          <a style="color: white;" href="/logout" class="btn btn-warning">Salir</a>
+        </div>
+      </div> 
+
+  <% }else{ %>
+
+    <form method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Full Name" name="name" value="<%= locals.old && old.name ? old.name : null %>">
+        <span class="text-danger small"><%= locals.errors && errors.name ? errors.name.msg : null %></span>
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" id="exampleFormControlSelect1" name="color">          
+          <option value="<%= locals.old && old.color ? old.color : null %>"><%= locals.old && old.color ? old.color : "Choose a color:" %></option>
+          <option value="MediumVioletRed">MediumVioletRed</option>
+          <option value="DarkRed">DarkRed</option>
+          <option value="LightSalmon">LightSalmon</option>
+          <option value="LightCoral">LightCoral</option>
+          <option value="IndianRed">IndianRed</option>
+          <option value="DarkSalmon">DarkSalmon</option>
+          <option value="Coral">Coral</option>
+          <option value="DarkMagenta">DarkMagenta</option>
+          <option value="DarkCyan">DarkCyan</option>
+        </select>
+        <span class="text-danger small"><%= locals.errors && errors.color ? errors.color.msg : null %></span>
+      </div>
+
+      <div class="form-group">
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" name="email" value="<%= locals.old && old.email ? old.email : null %>">
+        <span class="text-danger small"><%= locals.errors && errors.email ? errors.email.msg : null %></span>
+      </div>   
+
+      <div class="form-group">
+        <input t class="form-control" id="exampleFormControlInput1" placeholder="Age" name="age" value="<%= locals.old && old.age ? old.age : null %>">
+        <span class="text-danger small"><%= locals.errors && errors.age ? errors.age.msg : null %></span>
+      </div>   
+
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="remember">
+        <label class="form-check-label" for="remember">Remember color</label>
+      </div>
+
+      <br>
+      <button  type="submit" class="btn  btn-block">Send</button>      
+      <a style="color: white;" href="/destroy" class="btn btn-warning btn-block">Reset color</a>
+    </form>
+    <% } %>
+
+  </body>
+</html>

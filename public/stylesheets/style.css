@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
+button{
+  background-color: #fd7014;
+  color: white;
+  font-weight: bold;
+}
+form {
+  width: 600px; 
+  margin: 0 auto; 
+}
+
+form input{
+  padding: 12px 7px;
+  outline: none;
+  border: 1px solid #8c8f94;
+  font-family: 'Poppins' sans-serif;
+}
+
+form input:focus{
+  border-color: #16056b;
+}
